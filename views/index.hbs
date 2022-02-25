@@ -1,0 +1,42 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style='font-family: monospace;'>Access Token (Spotify)</h1>
+    <p style='font-family: monospace'>As this is a local server, your access
+      token is not kept on any servers elsewhere. That being said, do keep it
+      safe.</p>
+    <code
+      id='code'
+      style='font-family: monospace;
+    position: relative;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;'
+    >{{accessToken}}<button
+        id='copyBtn'
+        style='position:absolute; top:4px; right:4px'
+      >Copy</button></code>
+  </body>
+  <script>
+    document.querySelector('#copyBtn').addEventListener('click', async()=>{ let
+    code = document.querySelector('#code').innerText; code =
+    code.replace('Copy', '').trim(); await
+    navigator.clipboard.writeText(code);})
+  </script>
+</html>
