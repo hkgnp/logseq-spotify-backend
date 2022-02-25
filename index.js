@@ -28,6 +28,10 @@ var generateRandomString = function (length) {
 };
 
 (async () => {
+  app.get('/', (req, res) => {
+    res.send('Hello world');
+  });
+
   app.get('/auth/login', async (req, res) => {
     var scopes = [
       'streaming',
