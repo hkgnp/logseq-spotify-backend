@@ -35,8 +35,6 @@ var generateRandomString = function (length) {
   app.get('/auth/login', async (req, res) => {
     var scopes = [
       'streaming',
-      'user-read-private',
-      'user-read-email',
       'user-read-currently-playing',
       'user-read-playback-state',
     ];
