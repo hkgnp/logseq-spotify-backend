@@ -14,7 +14,7 @@ wax.setLayoutPath('./views/layouts');
 var spotify_client_id = process.env.CLIENT_ID;
 var spotify_client_secret = process.env.CLIENT_SECRET;
 
-var spotify_redirect_uri = 'https://logseq-spotify.herokuapp.com/auth/callback';
+var spotify_redirect_uri = process.env.REDIRECT_URI;
 
 var generateRandomString = function (length) {
   var text = '';
