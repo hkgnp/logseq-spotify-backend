@@ -37,6 +37,7 @@
     document.querySelector('#copyBtn').addEventListener('click', async()=>{ let
     code = document.querySelector('#code').innerText; code =
     code.replace('Copy', '').trim(); await
-    navigator.clipboard.writeText(code);})
+    navigator.clipboard.writeText(code);code = ''})
+
   </script>
 </html>
