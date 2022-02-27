@@ -16,7 +16,7 @@ const spotify_client_secret = process.env.CLIENT_SECRET;
 const spotify_redirect_uri = process.env.REDIRECT_URI;
 
 const generateRandomString = function (length) {
-  const text = '';
+  let text = '';
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
