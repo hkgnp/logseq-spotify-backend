@@ -11,17 +11,16 @@ app.use(express.static('public'));
 wax.on(hbs.handlebars);
 wax.setLayoutPath('./views/layouts');
 
-var spotify_client_id = process.env.CLIENT_ID;
-var spotify_client_secret = process.env.CLIENT_SECRET;
+const spotify_client_id = process.env.CLIENT_ID;
+const spotify_client_secret = process.env.CLIENT_SECRET;
+const spotify_redirect_uri = process.env.REDIRECT_URI;
 
-var spotify_redirect_uri = process.env.REDIRECT_URI;
-
-var generateRandomString = function (length) {
-  var text = '';
-  var possible =
+const generateRandomString = function (length) {
+  const text = '';
+  const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  for (var i = 0; i < length; i++) {
+  for (const i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
@@ -33,14 +32,14 @@ var generateRandomString = function (length) {
   });
 
   app.get('/auth/login', async (req, res) => {
-    var scopes = [
+    const scopes = [
       'streaming',
       'user-read-currently-playing',
       'user-read-playback-state',
     ];
-    var state = generateRandomString(16);
+    const state = generateRandomString(16);
 
-    var auth_query_parameters = new URLSearchParams({
+    const auth_query_parameters = new URLSearchParams({
       response_type: 'code',
       client_id: spotify_client_id,
       scope: scopes,
@@ -55,9 +54,9 @@ var generateRandomString = function (length) {
   });
 
   app.get('/auth/callback', async (req, res) => {
-    var code = req.query.code;
+    const code = req.query.code;
 
-    var authOptions = {
+    const authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
@@ -77,6 +76,8 @@ var generateRandomString = function (length) {
 
     request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
+        console.log(body);
+
         access_token = body.access_token;
 
         res.render('index', {
